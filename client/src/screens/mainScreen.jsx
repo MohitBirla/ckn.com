@@ -6,6 +6,7 @@ import TakeOrder from './takeOrder'
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { useSwipeable } from "react-swipeable";
+import Current_Slip from './current_slip';
 
 
 
@@ -59,8 +60,11 @@ export default function MainScreen() {
     <div className='mainScreen_Bg' {...handlers} style={{ overflowY: "hidden", overflowX: "hidden" }}>
       <div className='row '>
 
-        <div className='col-sm-9 col-md-9 col-lg-9 col-xl-9'>
+        <div className='col-sm-6 col-md-6 col-lg-6 col-xl-6'>
           <TakeOrder/>
+        </div>
+        <div className='col-sm-3 col-md-3 col-lg-3 col-xl-3'>
+          <Current_Slip/>
         </div>
          <div className='col-sm-5 col-md-3 col-lg-3 col-xl-3'>
           <div className='row '>

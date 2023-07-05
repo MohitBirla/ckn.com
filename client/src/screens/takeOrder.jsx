@@ -35,23 +35,40 @@ export default function TakeOrder() {
     orderNumber, setOrderNumber,
     getOrder, setGetOrder,
     showOrder, setShowOrder,
-    token
+    token,
+    chai, setChai,
+    chaiAmount, setChaiAmount,
+    chaiQuantity, setChaiQuantity,
+    coffee, setCoffee,
+    coffeeAmount, setCoffeeAmount,
+    coffeeQuantity, setCoffeeQuantity,
+    cigarette, setCigarette,
+    cigaretteAmount, setCigaretteAmount,
+    cigaretteQuantity, setCigaretteQuantity,
+    bottle, setBottle,
+    bottleAmount, setBottleAmount,
+    bottleQuantity, setBottleQuantity,
+    totalAmount, setTotalAmount,
+    paymentMode, setPaymentMode,
+    orderNo, setOrderNo,
+
+
   } = React.useContext(authContext);
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [paymentMode, setPaymentMode] = useState(true);
-  const [orderNo, setOrderNo] = useState(0);
-  const [chai, setChai] = useState(false);
-  const [chaiAmount, setChaiAmount] = useState(0);
-  const [chaiQuantity, setChaiQuantity] = useState(0);
-  const [coffee, setCoffee] = useState(false);
-  const [coffeeAmount, setCoffeeAmount] = useState(0);
-  const [coffeeQuantity, setCoffeeQuantity] = useState(0);
-  const [cigarette, setCigarette] = useState(false);
-  const [cigaretteAmount, setCigaretteAmount] = useState(0);
-  const [cigaretteQuantity, setCigaretteQuantity] = useState(0);
-  const [bottle, setBottle] = useState(false);
-  const [bottleAmount, setBottleAmount] = useState(0);
-  const [bottleQuantity, setBottleQuantity] = useState(0);
+  // const [totalAmount, setTotalAmount] = useState(0);
+  // const [paymentMode, setPaymentMode] = useState(true);
+  // const [orderNo, setOrderNo] = useState(0);
+  // const [chai, setChai] = useState(false);
+  // const [chaiAmount, setChaiAmount] = useState(0);
+  // const [chaiQuantity, setChaiQuantity] = useState(0);
+  // const [coffee, setCoffee] = useState(false);
+  // const [coffeeAmount, setCoffeeAmount] = useState(0);
+  // const [coffeeQuantity, setCoffeeQuantity] = useState(0);
+  // const [cigarette, setCigarette] = useState(false);
+  // const [cigaretteAmount, setCigaretteAmount] = useState(0);
+  // const [cigaretteQuantity, setCigaretteQuantity] = useState(0);
+  // const [bottle, setBottle] = useState(false);
+  // const [bottleAmount, setBottleAmount] = useState(0);
+  // const [bottleQuantity, setBottleQuantity] = useState(0);
   const [dropDown, setDropDown] = useState(false);
   const [dateTotal, setDateTotal] = useState();
   const [totalRevenue, setTotalRevenue] = useState([]);
@@ -412,16 +429,33 @@ export default function TakeOrder() {
     });
   }
   const [hide,setHide]=useState([
-    { Chai:false},
-    { coffee:false},
-    { cigarette:false},
-    { bottle:false},
+    { name:'chai',status:false},
+    { name:'coffee',status:false},
+    { name:'cigarette',status:false},
+    { name:'bottle',status:false},
+
+  
   ])
   const hideItems = (s,i)=>{
-    // console.log(s)
-var dt = hide;
-  dt[i] = {[s]:!dt[i][s]}
+  
+    var dt = hide
+// var dt = [];
+// .filter((dr)=>
+//     // dr.status !== true
+    
+// );
+// if(hide[i].status == true) {
+//   hide[i]={'status':false} 
+//   return ;
+// }
+// for (let i = 0; i < hide.length; i++) {
+//   dt.push({status:false})
+// }
+
+
+  dt[i] = {"status":!dt[i].status}
     setHide(dt)
+
 }
   return (
     <>
@@ -429,11 +463,12 @@ var dt = hide;
     <div className="mt-5" style={{ height: "" }}>
       <div className="row" style={{ height: "" }}>
         <div className="" style={{ height: "" }}>
-          <div className="row">
+          <div className="row ms-5">
           
-            <div className="col-lg-4 tea col-xl-4 col-md-4 mt-5">
-              <div className={`btn-g btn-blob glow-image-hover ${chai === true ? "imggg" : ""}`} onClick={(e) => {setChai(!chai);hideItems('chai',0)}}><img className="img-fluid d-flex align-item-center" src="/images/chai.png"></img></div>;
-             { hide[0].chai == true? <div className="buttonHolder">
+            <div className="col-lg-12 tea col-xl-12 d-lg-flex col-md-12 mt-5">
+
+              <div  className={` col-2 btn-g btn-blob glow-image-hover ${chai === true ? "imggg" : ""}`} onClick={(e) => {setChai(!chai);hideItems('chai',0)}}><img className="img-fluid d-flex align-item-center" src="/images/chai.png"></img></div>;
+             { hide[0].status == true? <div className="ms-5 mt-3 buttonHolder">
                 {[
                   { className: "button heart", value: "10" },
                   { className: "button cross", value: "12" },
@@ -445,7 +480,7 @@ var dt = hide;
                     onClick={(e) => addAmount(e)}
                     name="chaiAmount"
                     type="button"
-                    className={` glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${chai === true ? "imggg" : ""}`}
+                    className={` col-9 glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${chai === true ? "imggg" : ""}`}
                     value={c.value}
                     key={i}
                   >
@@ -455,10 +490,10 @@ var dt = hide;
               </div>:''}
             </div>
             
-            <div className="col-lg-4 tea col-xl-4 col-md-4 mt-5">
-              <div onClick={(e) => {setCoffee(!coffee);hideItems('coffee',1)}} className={`btn-g btn-blob glow-image-hover ${coffee === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/coffee.png"></img></div>
+            <div className="col-lg-12 d-lg-flex tea col-xl-12 col-md-12 mt-5">
+              <div onClick={(e) => {setCoffee(!coffee);hideItems('coffee',1)}} className={`col-2 btn-g btn-blob glow-image-hover ${coffee === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/coffee.png"></img></div>
 
-              {hide[1].coffee==true?<div className="buttonHolder">
+              {hide[1].status==true?<div className="ms-5 mt-3 buttonHolder">
                 {[
                   { className: "button heart", value: "20" },
                   { className: "button cross", value: "22" },
@@ -474,7 +509,7 @@ var dt = hide;
                     onClick={(e) => addAmount(e)}
                     name="coffeeAmount"
                     type="button"
-                    className={` glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${coffee === true ? "imggg" : ""}`}
+                    className={`col-9 glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${coffee === true ? "imggg" : ""}`}
                     value={c.value}
                     key={i}
                   >
@@ -488,128 +523,12 @@ var dt = hide;
 
             </div>
           
-            <div className="col-lg-4 tea col-xl-4 col-md-4"  {...handlers} >
-                  <section
-                    style={{ maxHeight: "44rem", marginTop: "-1rem" }}
-                  >
-                    <div className="card col-lg-12 col-xl-12" style={{ borderBottom: "dashed" }}>
-                      <div className="text-center fs-6 ">
-                        <div className="d-flex justify-content-between">
-                          <button className="btn" onClick={(e) => clearData(e)}>
-                            <DeleteIcon className="text-danger fs-1" />
-                          </button>
-                          <div> Order No.{editItem.length > 0 ? orderNo : orderNumber} </div>
+       
 
-                          {editItem.length > 0 ? <button
-                            className="btn text-success"
-                            onClick={(e) => editDataSuccess(e)}
-                          >
-                            <CheckCircleIcon className="fs-1" />
-                          </button> : <button
-                            className="btn text-success"
-                            onClick={(e) => addSuccessData(e)}
-                          >
-                            <CheckCircleIcon className="fs-1" />
-                          </button>}
-                        </div>
-                      </div>
+            <div className="col-lg-12 tea d-lg-flex col-xl-12 col-md-12 mt-5">
+              <div onClick={(e) => {setCigarette(!cigarette);hideItems('cigarette',2)}} className={`col-2 btn-g btn-blob glow-image-hover ${cigarette === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/cigrate.png"></img></div>
 
-                      <div style={{ borderBottom: "dashed" }}></div>
-                      {chaiAmount > 0 ? (
-                        <div className="row d-flex justify-content-around mt-1">
-                          <span
-                            className="text-start col-8"
-                            style={{ paddingLeft: "11%" }}
-                          >
-                            {`${chaiQuantity} x Chai`}
-                          </span>
-                          <span className="col-4">{chaiAmount} &#8377;</span>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {coffeeAmount > 0 ? (
-                        <div className="row d-flex justify-content-around mt-1">
-                          <span
-                            className="text-start col-8"
-                            style={{ paddingLeft: "11%" }}
-                          >
-                            {`${coffeeQuantity} x Coffee`}
-                          </span>
-                          <span className="col-4">{coffeeAmount} &#8377;</span>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {cigaretteAmount > 0 ? (
-                        <div className="row d-flex justify-content-around mt-1">
-                          <span
-                            className="text-start col-8"
-                            style={{ paddingLeft: "11%" }}
-                          >
-                            {`${cigaretteQuantity} x cigarette`}
-                          </span>
-                          <span className="col-4"> {cigaretteAmount} &#8377;</span>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                      {bottleAmount > 0 ? (
-                        <div className="row d-flex justify-content-around mt-1">
-                          <span
-                            className="text-start col-8"
-                            style={{ paddingLeft: "11%" }}
-                          >
-                            {`${bottleQuantity} x bottle`}
-                          </span>
-                          <span className="col-4"> {bottleAmount} &#8377;</span>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-
-                      <div style={{ borderBottom: "dashed" }} className="my-2"></div>
-
-                      <div className="fw-bold" style={{ fontSize: "0.9rem" }}>
-                        <div className="d-flex mx-3 justify-content-between ">
-                          <span className="">TOTAL AMOUNT</span>
-                          <span>{totalAmount} &#8377;</span>
-                        </div>
-                        <div className="d-flex mx-3 justify-content-between">
-                          <span className="mt-2">PAYMENT MODE</span>
-
-                          <span
-                            style={{ cursor: "pointer" }}
-                            onClick={(e) => setPaymentMode(!paymentMode)}
-                          >
-                            {paymentMode === true ? (
-                              <p className="text-primary fs-4">Online</p>
-                            ) : (
-                              <p className="text-danger fs-4">Offline</p>
-                            )}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="d-flex justify-content-center">
-                        {editItem.length > 0 ? (
-                          <button className="btn" onClick={(e) => editData(e)}>
-                            <ArrowCircleRightIcon sx={{ fontSize: 40 }} />
-                          </button>
-                        ) : (
-                          <button className="btn" onClick={(e) => addData(e)}>
-                            <ArrowCircleRightIcon sx={{ fontSize: 40 }} />
-                          </button>
-                        )}
-                      </div>
-
-                    </div>
-                  </section>
-          </div>
-
-            <div className="col-lg-4 tea col-xl-4 col-md-4 mt-5">
-              <div onClick={(e) => {setCigarette(!cigarette);hideItems('cigarette',2)}} className={`btn-g btn-blob glow-image-hover ${cigarette === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/cigrate.png"></img></div>
-
-              {hide[2].cigarette == true ?<div className="buttonHolder justify-content-center">
+              {hide[2].status == true ?<div className="ms-5 mt-3 buttonHolder justify-content-center">
                 {[
                   { className: "button heart", value: "8" },
                   { className: "button heart", value: "12" },
@@ -621,7 +540,7 @@ var dt = hide;
                     onClick={(e) => addAmount(e)}
                     name="cigaretteAmount"
                     type="button"
-                    className={` glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${cigarette === true ? "imggg" : ""}`}
+                    className={`col-9 glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${cigarette === true ? "imggg" : ""}`}
                     value={c.value}
                     key={c.value}
                   >
@@ -631,10 +550,10 @@ var dt = hide;
               </div>:""}
             </div>
           
-            <div className="col-lg-4 tea col-xl-4 col-md-4 mt-5 ">
-              <div onClick={(e) => {setBottle(!bottle);hideItems('bottle',3)}} className={`btn-g btn-blob glow-image-hover ${bottle === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/waterBottleImg.png"></img></div>
+            <div className="col-lg-12 d-lg-flex tea col-xl-12 col-md-12 mt-5 ">
+              <div onClick={(e) => {setBottle(!bottle);hideItems('bottle',3)}} className={`col-2 btn-g btn-blob glow-image-hover ${bottle === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/waterBottleImg.png"></img></div>
 
-              {hide[3].bottle==true?<div className="buttonHolder justify-content-center">
+              {hide[3].status==true?<div className="buttonHolder ms-5 mt-3 justify-content-center">
                 {[
                   { className: "button heart", value: "10" },
                 ].map((c) => (
@@ -643,7 +562,7 @@ var dt = hide;
                     onClick={(e) => addAmount(e)}
                     name="bottleAmount"
                     type="button"
-                    className={` glow-on-hover text-light text-center fs-3  fw-bold ${c.className} ${bottle === true ? "imggg" : ""}`}
+                    className={` glow-on-hover text-light text-center col-9 fs-3  fw-bold ${c.className} ${bottle === true ? "imggg" : ""}`}
                     value={c.value}
                     key={c.value}
                   >
@@ -652,6 +571,8 @@ var dt = hide;
                 ))}
               </div>:""}
             </div>
+
+
             <div className="col-lg-12 tea col-xl-12">
               <div className="row">
                 <div className="col-sm-5 col-md-5 col-lg-1 offset-lg-8 col-xl-1 ">

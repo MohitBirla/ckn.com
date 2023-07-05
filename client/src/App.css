@@ -40,9 +40,9 @@
 /*button css//////////////////////////////////////////*/
 
 .buttonHolder {
-  margin-top: 80px;
+  /* margin-top: 80px;
   margin-left: -1.8rem;
-  width: 20rem;
+  width: 20rem; */
   align-items: center;
   justify-content: center;
 }
@@ -130,7 +130,7 @@ h2 {
   color: #666; color: rgba(255,255,255,0.3); 
 } */
 
-.btn-g {
+/* .btn-g {
   position: relative;
   cursor: pointer;
   width: 110px;
@@ -142,9 +142,7 @@ h2 {
   filter: drop-shadow(0rem 0rem 1rem  blue);
   border-radius: 999px;
   
-  /* color: rgb(155, 155, 155); */
-  /* text-shadow: -1px -1px 0px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,1); */
-  /* font-size: 5em; */
+ 
   font-family: sans-serif;
   box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 
               inset 3px 15px 45px rgba(255,255,255,0.1),
@@ -174,8 +172,8 @@ h2 {
     -2px -40px 50px -20px rgba(255,255,255,0.1),
     2px 35px 50px -10px rgba(0,0,0,0.4),
     0px 0px 25px 8px rgba(60,60,60,1);
-}
-
+} */
+/* 
 .btn-g:active {
   color: rgba(50, 160, 17, 0.7);
   text-shadow: 1px 1px 0px rgba(255,255,255,0.15);
@@ -242,8 +240,8 @@ h2 {
   70%  { border-radius: 999px 999px; }
   85%  { border-radius: 850px 999px; }
   100% { border-radius: 999px 999px; }  
-}
-.glow-image-hover {
+} */
+/* .glow-image-hover {
   width: 6.5rem;
   height: 6.5rem;
   border: none;
@@ -267,7 +265,6 @@ h2 {
   position: relative;
   z-index: 0;
   border-radius:100% !important;
-  /* margin-bottom: -3.5rem; */
 }
 
 .glow-image-hover:before ,.glow-button:before{
@@ -284,8 +281,7 @@ h2 {
   animation: glowing 20s linear infinite;
   opacity: 1;
   transition: opacity .3s ease-in-out;
-  /* border-radius:100  %; */
-}
+} */
 
 /* .glow-image-hover:active {
   color: #000

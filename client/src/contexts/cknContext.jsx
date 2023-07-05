@@ -15,6 +15,25 @@ export default function CknContext({ children }) {
   // const [URL, setURL] = useState("http://localhost:8080/api");
   const [URL, setURL] = useState("https://chai-ke-nashedi.onrender.com/api");
 
+  const [chai, setChai] = useState(false);
+  const [chaiAmount, setChaiAmount] = useState(0);
+  const [chaiQuantity, setChaiQuantity] = useState(0);
+  const [coffee, setCoffee] = useState(false);
+  const [coffeeAmount, setCoffeeAmount] = useState(0);
+  const [coffeeQuantity, setCoffeeQuantity] = useState(0);
+  const [cigarette, setCigarette] = useState(false);
+  const [cigaretteAmount, setCigaretteAmount] = useState(0);
+  const [cigaretteQuantity, setCigaretteQuantity] = useState(0);
+  const [bottle, setBottle] = useState(false);
+  const [bottleAmount, setBottleAmount] = useState(0);
+  const [bottleQuantity, setBottleQuantity] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [paymentMode, setPaymentMode] = useState(true);
+  const [orderNo, setOrderNo] = useState(0);
+
+
+
+
   const [editItem, setEditItem] = useState([]);
   // const loginActivity = () => {
   //   axios.get('http://localhost:8080/loginActivity');
@@ -64,7 +83,24 @@ export default function CknContext({ children }) {
         getOrder, setGetOrder,
         auth, setAuth,
         token, setToken,
-        showOrder, setShowOrder
+        showOrder, setShowOrder,
+
+        chai, setChai,
+        chaiAmount, setChaiAmount,
+        chaiQuantity, setChaiQuantity,
+        coffee, setCoffee,
+        coffeeAmount, setCoffeeAmount,
+        coffeeQuantity, setCoffeeQuantity,
+        cigarette, setCigarette,
+        cigaretteAmount, setCigaretteAmount,
+        cigaretteQuantity, setCigaretteQuantity,
+        bottle, setBottle,
+        bottleAmount, setBottleAmount,
+        bottleQuantity, setBottleQuantity,
+        totalAmount, setTotalAmount,
+        paymentMode, setPaymentMode,
+        orderNo, setOrderNo
+
 
       }}
     >
