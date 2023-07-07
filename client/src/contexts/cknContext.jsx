@@ -13,7 +13,8 @@ export default function CknContext({ children }) {
   const [showOrder, setShowOrder] = useState(false);
   const [token, setToken] = useState("");
   // const [URL, setURL] = useState("http://localhost:8080/api");
-  const [URL, setURL] = useState("https://chai-ke-nashedi.onrender.com/api");
+  // const [URL, setURL] = useState("https://chai-ke-nashedi.onrender.com/api");
+  const [URL, setURL] = useState("https://chaikenashedi-com.onrender.com/api");
 
   const [chai, setChai] = useState(false);
   const [chaiAmount, setChaiAmount] = useState(0);
