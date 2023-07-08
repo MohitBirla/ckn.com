@@ -123,6 +123,8 @@ exports.updateCknItems = (req, res) => {
                 time: req.body.time,
                 chai: req.body.chai,
                 coffee: req.body.coffee,
+                drink: req.body.drink,
+                drinkQuantity: req.body.drinkQuantity,
                 cigarette: req.body.cigarette,
                 cigaretteQuantity: req.body.cigaretteQuantity,
                 chaiQuantity: req.body.chaiQuantity,
@@ -229,6 +231,7 @@ exports.signUp = async (req, res) => {
     }
 }
 
+
 exports.signIn = async (req, res) => {
 
     try {
@@ -275,6 +278,7 @@ exports.getTotalByDate = async (req, res) => {
                 _id: "$date",
                 totalAmount: { $sum: { $add: "$orderTotal" } },
                 chaiAmount: { $sum: { $add: "$chai" } },
+                drinkAmount: { $sum: { $add: "$chai" } },
                 bottleAmount: { $sum: { $add: "$bottle" } },
                 coffeeAmount: { $sum: { $add: "$coffee" } },
                 cigaretteAmount: { $sum: { $add: "$cigarette" } },
@@ -292,6 +296,7 @@ exports.getTotalByDate = async (req, res) => {
                 totalAmount: { $sum: { $add: "$orderTotal" } },
                 chaiAmount: { $sum: { $add: "$chai" } },
                 bottleAmount: { $sum: { $add: "$bottle" } },
+                drinkAmount: { $sum: { $add: "$chai" } },
                 coffeeAmount: { $sum: { $add: "$coffee" } },
                 cigaretteAmount: { $sum: { $add: "$cigarette" } },
                 count: { $sum: 1 }
@@ -306,6 +311,7 @@ exports.getTotalByDate = async (req, res) => {
                     totalAmount: { $sum: { $add: "$orderTotal" } },
                     chaiAmount: { $sum: { $add: "$chai" } },
                     bottleAmount: { $sum: { $add: "$bottle" } },
+                    drinkAmount: { $sum: { $add: "$chai" } },
                     coffeeAmount: { $sum: { $add: "$coffee" } },
                     cigaretteAmount: { $sum: { $add: "$cigarette" } },
                     count: { $sum: 1 }
@@ -326,6 +332,7 @@ exports.getTotalByDate = async (req, res) => {
                     totalAmount: { $sum: { $add: "$orderTotal" } },
                     chaiAmount: { $sum: { $add: "$chai" } },
                     bottleAmount: { $sum: { $add: "$bottle" } },
+                    drinkAmount: { $sum: { $add: "$chai" } },
                     coffeeAmount: { $sum: { $add: "$coffee" } },
                     cigaretteAmount: { $sum: { $add: "$cigarette" } },
                     count: { $sum: 1 }
@@ -346,6 +353,7 @@ exports.getTotalByDate = async (req, res) => {
                     totalAmount: { $sum: { $add: "$orderTotal" } },
                     chaiAmount: { $sum: { $add: "$chai" } },
                     bottleAmount: { $sum: { $add: "$bottle" } },
+                    drinkAmount: { $sum: { $add: "$chai" } },
                     coffeeAmount: { $sum: { $add: "$coffee" } },
                     cigaretteAmount: { $sum: { $add: "$cigarette" } },
                     count: { $sum: 1 }
@@ -360,6 +368,7 @@ exports.getTotalByDate = async (req, res) => {
                     totalAmount: { $sum: { $add: "$orderTotal" } },
                     chaiAmount: { $sum: { $add: "$chai" } },
                     bottleAmount: { $sum: { $add: "$bottle" } },
+                    drinkAmount: { $sum: { $add: "$chai" } },
                     coffeeAmount: { $sum: { $add: "$coffee" } },
                     cigaretteAmount: { $sum: { $add: "$cigarette" } },
                     count: { $sum: 1 }
