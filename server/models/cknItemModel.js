@@ -47,7 +47,7 @@ const cknItemSchema = new Schema({
     bottleQuantity: {
         type: Number,
     },
-    drink: {
+    drinkQuantity: {
         type: Number,
     },
     coffeeQuantity: {
