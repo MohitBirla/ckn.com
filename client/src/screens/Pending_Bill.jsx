@@ -72,6 +72,8 @@ function Pending_Bill(props) {
       cigaretteQuantity: dt.cigaretteQuantity,
       bottle: dt.bottle,
       bottleQuantity: dt.bottleQuantity,
+      drink:dt.drink,
+      drinkQuantity: dt.drinkQuantity,
       date: newDate,
       orderStatus: "success",
       paymentMode: paymentValue[i],
@@ -110,9 +112,9 @@ function Pending_Bill(props) {
     }).then(resp => {
       if (resp.status === 200) {
         setEditItem(resp.data.data);
-        // setPendingOrder(!pendingOrder);
-        // setSuccessOrder(!successOrder);
-        // setData(resp.data);
+        setPendingOrder(!pendingOrder);
+        setSuccessOrder(!successOrder);
+        setData(resp.data);
       }
     }, err => {
       console.log(err);
@@ -209,6 +211,12 @@ function Pending_Bill(props) {
                   {`${dt.bottleQuantity} x bottle`}
                 </span>
                 <span key={i + 8} className="col-4"> {dt.bottle} &#8377;</span>
+              </div> : ""}
+              {dt.drinkQuantity > 0 ? <div className="row d-flex justify-content-around ">
+                <span key={i + 9} className="text-start col-8" style={{ paddingLeft: "11%" }}>
+                  {`${dt.drinkQuantity} x drink`}
+                </span>
+                <span key={i + 10} className="col-4"> {dt.drink} &#8377;</span>
               </div> : ""}
 
               <div style={{ borderBottom: "dashed" }} className="my-2"></div>

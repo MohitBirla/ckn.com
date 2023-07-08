@@ -28,6 +28,9 @@ export default function CknContext({ children }) {
   const [bottle, setBottle] = useState(false);
   const [bottleAmount, setBottleAmount] = useState(0);
   const [bottleQuantity, setBottleQuantity] = useState(0);
+  const [drink, setDrink] = useState(false);
+  const [drinkAmount, setDrinkAmount] = useState(0);
+  const [drinkQuantity, setDrinkQuantity] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [paymentMode, setPaymentMode] = useState(true);
   const [orderNo, setOrderNo] = useState(0);
@@ -85,7 +88,6 @@ export default function CknContext({ children }) {
         auth, setAuth,
         token, setToken,
         showOrder, setShowOrder,
-
         chai, setChai,
         chaiAmount, setChaiAmount,
         chaiQuantity, setChaiQuantity,
@@ -98,6 +100,9 @@ export default function CknContext({ children }) {
         bottle, setBottle,
         bottleAmount, setBottleAmount,
         bottleQuantity, setBottleQuantity,
+        drink, setDrink,
+        drinkAmount, setDrinkAmount,
+        drinkQuantity, setDrinkQuantity,
         totalAmount, setTotalAmount,
         paymentMode, setPaymentMode,
         orderNo, setOrderNo

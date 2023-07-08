@@ -16,7 +16,6 @@ function Current_Slip() {
   const {
   
     editItem,setEditItem,
-   
     orderNumber, setOrderNumber,
     chai, setChai,
     URL,
@@ -31,6 +30,9 @@ function Current_Slip() {
     bottle, setBottle,
     bottleAmount, setBottleAmount,
     bottleQuantity, setBottleQuantity,
+    drink, setDrink,
+    drinkAmount, setDrinkAmount,
+    drinkQuantity, setDrinkQuantity,
     totalAmount, setTotalAmount,
     paymentMode, setPaymentMode,
     orderNo, setOrderNo,
@@ -65,13 +67,15 @@ function Current_Slip() {
       cigaretteQuantity: cigaretteQuantity,
       bottle: bottleAmount,
       bottleQuantity: bottleQuantity,
+      drink: drinkAmount,
+      drinkQuantity: drinkQuantity,
       date: newDate,
       time: new Date().toLocaleTimeString(),
       orderStatus: "PENDING",
       paymentMode: paymentMode === true ? "Online" : "Offline",
       orderTotal: totalAmount,
     };
-    if (totalAmount > 0 && coffeeAmount >= 0 && chaiAmount >= 0 && cigaretteAmount >= 0 && bottleAmount >=0) {
+    if (totalAmount > 0 && coffeeAmount >= 0 && chaiAmount >= 0 && cigaretteAmount >= 0 && bottleAmount >=0 && drinkAmount >=0) {
       await axios.post(`${URL}/setCknItems`, data,
         {
           headers: {
@@ -111,6 +115,10 @@ function Current_Slip() {
         setBottleAmount(0);
         setBottleQuantity(0);
       }
+      if (drinkAmount <= 0) {
+        setDrinkAmount(0);
+        setDrinkQuantity(0);
+      }
       alert("please add something");
     }
   };
@@ -128,6 +136,8 @@ function Current_Slip() {
       cigaretteQuantity: cigaretteQuantity,
       bottle: bottleAmount,
       bottleQuantity: bottleQuantity,
+      drink: drinkAmount,
+      drinkQuantity: drinkQuantity,
       date: newDate,
       time: editItem[0].time,
       orderStatus: "success",
@@ -170,6 +180,8 @@ function Current_Slip() {
       cigaretteQuantity: cigaretteQuantity,
       bottle: bottleAmount,
       bottleQuantity: bottleQuantity,
+      drink: drinkAmount,
+      drinkQuantity: drinkQuantity,
       date: newDate,
       time: new Date().toLocaleTimeString(),
       orderStatus: "success",
@@ -221,6 +233,9 @@ function Current_Slip() {
     setBottleQuantity(0);
     setBottleAmount(0);
     setBottle(false);
+    setDrinkQuantity(0);
+    setDrinkAmount(0);
+    setDrink(false);
     setTotalAmount(0);
   };
 
@@ -237,6 +252,8 @@ function Current_Slip() {
       cigaretteQuantity: cigaretteQuantity,
       bottle: bottleAmount,
       bottleQuantity: bottleQuantity,
+      drink: drinkAmount,
+      drinkQuantity: drinkQuantity,
       date: newDate,
       time: editItem[0].time,
       orderStatus: "PENDING",
@@ -349,6 +366,19 @@ function Current_Slip() {
                             {`${bottleQuantity} x bottle`}
                           </span>
                           <span className="col-4"> {bottleAmount} &#8377;</span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      {drinkAmount > 0 ? (
+                        <div className="row d-flex justify-content-around mt-1">
+                          <span
+                            className="text-start col-8"
+                            style={{ paddingLeft: "11%" }}
+                          >
+                            {`${drinkQuantity} x drink`}
+                          </span>
+                          <span className="col-4"> {drinkAmount} &#8377;</span>
                         </div>
                       ) : (
                         ""
