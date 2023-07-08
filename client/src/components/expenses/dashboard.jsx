@@ -7,7 +7,7 @@ const Dashboard = ()=>{
         <>
           <div className="breadcrumb_dashboard">
             <h6 className="text-white ms-1 ms-lg-5 ms-md-5 redhat_SB ">
-              Welcome to SYPSS
+              Welcome To Chai Ke Nashedi
             </h6>
             <h3 className="text-white ms-1 ms-lg-5 ms-md-5 font_42 outfit_SB">
               DASHBOARD
@@ -32,19 +32,18 @@ const Dashboard = ()=>{
                     </div>
                     <div className="dashboard_cards_text">
                       <span className="font_14 outfit_R  gray_theme_color ms-3">
-                        Branch Reports
+                        New Users
                       </span>
                       <h6 className="font_28 outfit_B ms-3">
                        6000
                       </h6>
                       <div className="dasboard_card_footer d-flex">
-                        <p className="mx-3 mt-2">Learn More</p>
                         <div
                         //   src={`${process.env.PUBLIC_URL}/assets/Images/Component_18.svg`}
                           alt=""
                           className="ms-auto mx-4"
                         />
-                        Reports
+                        
                       </div>
                     </div>
                   </div>
@@ -69,22 +68,16 @@ const Dashboard = ()=>{
                     </div>
                     <div className="dashboard_cards_text">
                       <span className="font_14 outfit_R  gray_theme_color mx-3">
-                        Events Reports
+                        Total Income
                       </span>
-                      <h6 className="font_28 outfit_B ms-3">
-                        {/* {eventYogaBandhuReport} */}
+                      <h6 className="font_28 outfit_B ">
+                       6000
                       </h6>
                     </div>
                   </div>
                   <div className="dasboard_card_footer d-flex">
                     <span className="mx-3 mt-2 mb-2">
-                      <select
-                        style={{ height: "2rem" }}
-                        className="selectpicker me-2 border_colo rounded-1"
-                      >
-                       
-                      </select>
-                      select events
+                      
                     </span>
                     <img
                     //   onClick={EventshReports}

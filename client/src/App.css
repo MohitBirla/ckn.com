@@ -2943,66 +2943,6 @@ input#female {
   }
 
 
-
-  /* Branches  */
-  .branch_details_card {
-      /* top: 40px;
-      right: 40px; */
-      position: absolute;
-      /* height: 534%; */
-      width: 40%;
-      right: 9%;
-      top: 6%;
-  }
-  
-  .address_main_container {
-      padding: 20px 15px;
-      display: flex;
-  }
-  
-  .address_main_container.active {
-      background: #FFF1E6;
-  }
-  .member_badge{
-      padding: 2px 10px;
-      background: #F2F2F2;
-      border-radius: 9px;
-  }
-  
-  .member_badge.active {
-     
-      background: #fff;
-   
-  }
-  
-  p.mb-2.branch_address_full {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      width: 90%;
-  }
-  
-  .branch_image {
-      width: 125px;
-      height: 150px;
-      overflow: hidden;
-  }
-  
-  .branch_image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }    
-  
-.listStyleNone{
-  list-style: none;
-  float: right;
-  margin-top: -20px;
-}
-.iframeImg{
-  height: 150%;
-}
-
 /* == dashboard */
 
 .Sypss_margin{
@@ -3044,70 +2984,6 @@ input#female {
 }
 
 
-
-/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Event Reports <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-/* .EventName_box{
-  min-width: auto !important;
-  text-align: center !important;
-  align-items: center !important;
-} */
-.EventYear_box{
-  min-width: 120px !important;
-  text-align: center !important;
-}
-.All_header_color th{
-  color: #ffffff;
-}
-.camp_name_border{
-  border: 2px solid #2D4356; 
-  border-radius: 5px;
-  -webkit-border-radius: 5px; 
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  /* margin: 0px 0px 16px; */
-  /* padding: 8px; */
-}
-.camp_name_border_batch_wing{
-  border: 2px solid #84D093; 
-  border-radius: 5px;
-  -webkit-border-radius: 5px; 
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  padding: 10px 30px;
-}
-.background_color{
-  background-color: #F6F6F6; 
-}
-.background_color_manager{
-  background-color: #FEF1E9; 
-  color: #f26000 !important;
-}
-.imgs{
-
-  object-fit: fill;
-  /* width: 90% !important;  */
-  height: 109px !important;
-}
-.text-field{
-  /* padding: 19%; */
-}
-.bordr_dashed{
-  border: 1px dashed #495C6D;
-  
-}
-.img_map{
-  
-  /* object-fit:cover; */
-  /* width: 90% !important;
-  height: 50%; */
-}
-
-
-/* .ui-datepicker-calendar {
-  display: none;
-  } */
 
 @media screen and (min-width: 400px) {
   .fill_line{
