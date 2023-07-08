@@ -195,6 +195,7 @@ const Dashboard = ()=>{
                       type="bar"
                       height={"310px"}
                     /> */}
+                    
                   </div> 
                 </div>
               </div>
