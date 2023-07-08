@@ -85,6 +85,8 @@ exports.setCknItems = (req, res) => {
                             chai: req.body.chai,
                             bottle: req.body.bottle,
                             bottleQuantity: req.body.bottleQuantity,
+                            drink: req.body.drink,
+                            drinkQuantity: req.body.drinkQuantity,
                             coffee: req.body.coffee,
                             cigarette: req.body.cigarette,
                             cigaretteQuantity: req.body.cigaretteQuantity,
