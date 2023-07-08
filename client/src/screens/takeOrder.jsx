@@ -48,6 +48,9 @@ export default function TakeOrder() {
     bottle, setBottle,
     bottleAmount, setBottleAmount,
     bottleQuantity, setBottleQuantity,
+    drink, setDrink,
+    drinkAmount, setDrinkAmount,
+    drinkQuantity, setDrinkQuantity,
     totalAmount, setTotalAmount,
     paymentMode, setPaymentMode,
     orderNo, setOrderNo,
@@ -72,26 +75,7 @@ export default function TakeOrder() {
   const [dropDown, setDropDown] = useState(false);
   const [dateTotal, setDateTotal] = useState();
   const [totalRevenue, setTotalRevenue] = useState([]);
-  const [showChaiBtn, setShowChaiBtn] = useState(false);
-
-  const chaiItem = [10, 12, 15];
-  const coffeeItem = [20, 25, 60];
-  const cigaretteItem = [8, 12, 15, 20];
-  const clearData = () => {
-    setCigaretteQuantity(0);
-    setCigaretteAmount(0);
-    setCigarette(false);
-    setCoffeeQuantity(0);
-    setCoffeeAmount(0);
-    setCoffee(false);
-    setChaiQuantity(0);
-    setChaiAmount(0);
-    setChai(false);
-    setBottleQuantity(0);
-    setBottleAmount(0);
-    setBottle(false);
-    setTotalAmount(0);
-  };
+ 
 
 
 
@@ -147,12 +131,25 @@ export default function TakeOrder() {
         setBottleAmount(bottle);
       }
     }
+    else if (name === "drinkAmount") {
+      if (drink === true) {
+        const drink = parseInt(drinkAmount) - parseInt(value);
+        setDrinkQuantity(parseInt(drinkQuantity) - 1);
+        setDrinkAmount(drink);
+
+      }
+      else {
+        const drink = parseInt(drinkAmount) + parseInt(value);
+        setDrinkQuantity(parseInt(drinkQuantity) + 1);
+        setDrinkAmount(drink);
+      }
+    }
   };
   useEffect(() => {
     let total =
-      parseInt(chaiAmount) + parseInt(coffeeAmount) + parseInt(cigaretteAmount) + parseInt(bottleAmount);
+      parseInt(chaiAmount) + parseInt(coffeeAmount) + parseInt(cigaretteAmount) + parseInt(bottleAmount) + parseInt(drinkAmount);
     setTotalAmount(total);
-  }, [chaiAmount, coffeeAmount, cigaretteAmount , bottleAmount]);
+  }, [chaiAmount, coffeeAmount, cigaretteAmount , bottleAmount , drinkAmount]);
 
   useEffect(() => {
     if (editItem.length > 0) {
@@ -169,205 +166,13 @@ export default function TakeOrder() {
       setBottleQuantity(editItem[0].bottleQuantity);
       setBottleAmount(editItem[0].bottle);
       setBottle(false);
+      setDrinkQuantity(editItem[0].drinkQuantity);
+      setDrinkAmount(editItem[0].drink);
+      setDrink(false);
       // setTotalAmount(editItem[0].orderTotal);
     }
   }, [editItem]);
-
-  const addData = async () => {
-    const data = {
-      orderNo: orderNumber,
-      chai: chaiAmount,
-      chaiQuantity: chaiQuantity,
-      coffee: coffeeAmount,
-      coffeeQuantity: coffeeQuantity,
-      cigarette: cigaretteAmount,
-      cigaretteQuantity: cigaretteQuantity,
-      bottle: bottleAmount,
-      bottleQuantity: bottleQuantity,
-      date: newDate,
-      time: new Date().toLocaleTimeString(),
-      orderStatus: "PENDING",
-      paymentMode: paymentMode === true ? "Online" : "Offline",
-      orderTotal: totalAmount,
-    };
-    if (totalAmount > 0 && coffeeAmount >= 0 && chaiAmount >= 0 && cigaretteAmount >= 0 && bottleAmount >=0) {
-      await axios.post(`${URL}/setCknItems`, data,
-        {
-          headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("tokens")}`
-          },
-        }
-      ).then(
-        async (resp) => {
-          if (resp.status === 200) {
-            clearData();
-            setPendingOrder(!pendingOrder);
-            setGetOrder(!getOrder);
-          }
-        },
-        (err) => {
-          console.log(err);
-          if (err.response.data === "Forbidden") {
-            logout();
-          }
-        }
-      );
-    } else {
-      if (coffeeAmount <= 0) {
-        setCoffeeQuantity(0);
-        setCoffeeAmount(0);
-      }
-      if (chaiAmount <= 0) {
-        setChaiAmount(0);
-        setChaiQuantity(0);
-      }
-      if (cigaretteAmount <= 0) {
-        setCigaretteAmount(0);
-        setCigaretteQuantity(0);
-      }
-      if (bottleAmount <= 0) {
-        setBottleAmount(0);
-        setBottleQuantity(0);
-      }
-      alert("please add something");
-    }
-  };
-  const addSuccessData = async () => {
-    const data = {
-      orderNo: orderNumber,
-      chai: chaiAmount,
-      chaiQuantity: chaiQuantity,
-      coffee: coffeeAmount,
-      coffeeQuantity: coffeeQuantity,
-      cigarette: cigaretteAmount,
-      cigaretteQuantity: cigaretteQuantity,
-      bottle: bottleAmount,
-      bottleQuantity: bottleQuantity,
-      date: newDate,
-      time: new Date().toLocaleTimeString(),
-      orderStatus: "success",
-      paymentMode: paymentMode === true ? "Online" : "Offline",
-      orderTotal: totalAmount,
-    };
-    if (totalAmount > 0) {
-      await axios.post(`${URL}/setCknItems`, data, {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("tokens")}`
-        },
-      }).then(
-        async (resp) => {
-          if (resp.status === 200) {
-            clearData();
-            setPendingOrder(!pendingOrder);
-            setSuccessOrder(!successOrder);
-            setGetOrder(!getOrder);
-            // toast("Loggin Successfully ✔");
-            toast.success("Payment Successfully ✔", {
-              position: toast.POSITION.TOP_RIGHT,
-              autoClose: 2000,
-            });
-          }
-        },
-        (err) => {
-          console.log(err);
-          if (err.response.data === "Forbidden") {
-            logout();
-          }
-        }
-      );
-    } else {
-      alert("please add something");
-    }
-  };
-  const editData = (e, dt) => {
-    const Id = editItem[0]._id;
-    const data = {
-      orderId: editItem[0].orderId,
-      orderNo: editItem[0].orderNo,
-      chai: chaiAmount,
-      chaiQuantity: chaiQuantity,
-      coffee: coffeeAmount,
-      coffeeQuantity: coffeeQuantity,
-      cigarette: cigaretteAmount,
-      cigaretteQuantity: cigaretteQuantity,
-      bottle: bottleAmount,
-      bottleQuantity: bottleQuantity,
-      date: newDate,
-      time: editItem[0].time,
-      orderStatus: "PENDING",
-      paymentMode: paymentMode === true ? "Online" : "Offline",
-      orderTotal: totalAmount,
-    };
-    axios.put(`${URL}/updateCknItems?id=${Id}`, data, {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokens")}`
-      },
-    }).then(
-      (resp) => {
-        if (resp.status === 200) {
-          setPendingOrder(!pendingOrder);
-          setEditItem([]);
-          clearData();
-          setGetOrder(!getOrder);
-
-          // setSuccessOrder(!successOrder);
-          // setData(resp.data);
-        }
-      },
-      (err) => {
-        console.log(err);
-        if (err.response.data === "Forbidden") {
-          logout();
-        }
-      }
-    );
-  };
-  const editDataSuccess = (e, dt) => {
-    const Id = editItem[0]._id;
-    const data = {
-      orderId: editItem[0].orderId,
-      orderNo: editItem[0].orderNo,
-      chai: chaiAmount,
-      chaiQuantity: chaiQuantity,
-      coffee: coffeeAmount,
-      coffeeQuantity: coffeeQuantity,
-      cigarette: cigaretteAmount,
-      cigaretteQuantity: cigaretteQuantity,
-      bottle: bottleAmount,
-      bottleQuantity: bottleQuantity,
-      date: newDate,
-      time: editItem[0].time,
-      orderStatus: "success",
-      paymentMode: paymentMode === true ? "Online" : "Offline",
-      orderTotal: totalAmount,
-    };
-    axios.put(`${URL}/updateCknItems?id=${Id}`, data, {
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("tokens")}`
-      },
-    }).then(
-      (resp) => {
-        setPendingOrder(!pendingOrder);
-        setSuccessOrder(!successOrder);
-        if (resp.status === 200) {
-
-          setEditItem([]);
-          clearData();
-          setGetOrder(!getOrder);
-        }
-      },
-      (err) => {
-        console.log(err);
-        if (err.response.data === "Forbidden") {
-          logout();
-        }
-      }
-    );
-  };
+ 
   useEffect(() => {
     if (coffeeAmount <= 0 || coffeeQuantity <= 0) {
       setCoffeeQuantity(0);
@@ -391,7 +196,13 @@ export default function TakeOrder() {
       setBottleQuantity(0);
       setBottle(false);
     }
-  }, [chaiAmount, coffeeAmount, cigaretteAmount , bottleAmount]);
+    if (drinkAmount <= 0 || drinkQuantity <= 0) {
+      setDrinkAmount(0);
+      setDrinkQuantity(0);
+      setDrink(false);
+    }
+  }, [chaiAmount, coffeeAmount, cigaretteAmount , bottleAmount , drinkAmount]);
+  
   const logout = () => {
     localStorage.removeItem("tokens");
     localStorage.removeItem("time");
@@ -399,12 +210,8 @@ export default function TakeOrder() {
 
     history("/login");
   }
-  const swipeEvent = () => {
-  }
-  const handlers = useSwipeable({
-    onSwipedRight: () => editItem.length > 0 ? editData() : addData()
 
-  });
+
   const clearOrderNumber = () => {
     axios.put(`${URL}/deleteCounterNumber`);
     setGetOrder(!getOrder);
@@ -433,6 +240,8 @@ export default function TakeOrder() {
     { name:'coffee',status:false},
     { name:'cigarette',status:false},
     { name:'bottle',status:false},
+    { name:'drink',status:false},
+
 
   
   ])
@@ -460,7 +269,7 @@ export default function TakeOrder() {
   return (
     <>
     <ToastContainer />
-    <div className="mt-5" style={{ height: "" }}>
+    <div className="" style={{ overflowY: "auto", scrollbarGutter: "stable-both-edges", overflowX: "hidden", height: "100vh", padding: "1rem" }}>
       <div className="row" style={{ height: "" }}>
         <div className="" style={{ height: "" }}>
           <div className="row ms-5">
@@ -571,6 +380,29 @@ export default function TakeOrder() {
                 ))}
               </div>:""}
             </div>
+            <div className="col-lg-12 d-lg-flex tea col-xl-12 col-md-12 mt-5 ">
+              <div onClick={(e) => {setDrink(!drink);hideItems('drink',4)}} className={`col-2 btn-g btn-blob glow-image-hover ${drink === true ? "imggg" : ""}`}><img className="img-fluid d-flex align-item-center" src="/images/drinkImage.png"></img></div>
+
+              {hide[4].status==true?<div className="buttonHolder ms-5 mt-3 justify-content-center">
+                {[
+                  { className: "button heart", value: "10" },
+                  { className: "button heart", value: "120" },
+
+                ].map((c) => (
+
+                  <button
+                    onClick={(e) => addAmount(e)}
+                    name="drinkAmount"
+                    type="button"
+                    className={` glow-on-hover text-light text-center col-9 fs-3  fw-bold ${c.className} ${drink === true ? "imggg" : ""}`}
+                    value={c.value}
+                    key={c.value}
+                  >
+                    {c.value}
+                  </button>
+                ))}
+              </div>:""}
+            </div>
 
 
             <div className="col-lg-12 tea col-xl-12">
@@ -667,6 +499,9 @@ export default function TakeOrder() {
                           <h6>Chai Amount ={total.chaiAmount} </h6>
                           <h6>Coffee Amount = {total.coffeeAmount}</h6>
                           <h6>Cigarette Amount = {total.cigaretteAmount}</h6>
+                          <h6>Bottle Amount = {total.bottleAmount}</h6>
+                          <h6>Drink Amount = {total.drinkAmount}</h6>
+
                           <h4>Total Amount ={total.totalAmount}</h4>
 
                         </div>) : ""}
