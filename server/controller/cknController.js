@@ -49,6 +49,7 @@ exports.getCounterNumber = async (req, res, next) => {
 
 
 exports.setCknItems = (req, res) => {
+    console.log('===>',req.body)
     CounterModel.findOneAndUpdate(
         { id: "autoVal" },
         { "$inc": { "sequence": 1 } },

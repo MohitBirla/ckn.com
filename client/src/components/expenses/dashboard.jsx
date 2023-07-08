@@ -1,6 +1,6 @@
 
 import React from "react";
-import Chart from 'react-apexcharts'
+// import Chart from 'react-apexcharts'
 
 const Dashboard = ()=>{
     return (
@@ -179,22 +179,17 @@ const Dashboard = ()=>{
                 </div>
                 <div className="graph_scroll">
                 <div >
-                    <Chart
+                    {/* <Chart
                       options={{
                         colors: ["#FF6E31"],
                         chart: { id: "Branch Detail" },
                         xaxis: { categories: [1,2,3,4,5,6,7,8,9,10], },
-                        // yaxis: {
-                        //    title: {
-                        //    text: "Total Branch",
-                        //    style: { color: "#F26000", fontSize: 10 },
-                        // },
-                        // },
+                       
                       }}
                       series={[{ name: "Total Branch", data: [1,2,3,4,5,6,7,8,9,10] }]}
                       type="bar"
                       height={"310px"}
-                    />
+                    /> */}
                   </div> 
                 </div>
               </div>
