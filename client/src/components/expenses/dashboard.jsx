@@ -184,12 +184,7 @@ const Dashboard = ()=>{
                         colors: ["#FF6E31"],
                         chart: { id: "Branch Detail" },
                         xaxis: { categories: [1,2,3,4,5,6,7,8,9,10], },
-                        // yaxis: {
-                        //    title: {
-                        //    text: "Total Branch",
-                        //    style: { color: "#F26000", fontSize: 10 },
-                        // },
-                        // },
+                       
                       }}
                       series={[{ name: "Total Branch", data: [1,2,3,4,5,6,7,8,9,10] }]}
                       type="bar"

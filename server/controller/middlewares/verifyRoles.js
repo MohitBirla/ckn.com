@@ -1,6 +1,6 @@
 const verifyRoles = (...allowedRoles) => {
     return (req, res, next) => {
-        if (!req?.roles) return res.sendStatus(401);
+        if (!req?.roles)  res.sendStatus(401);
         const rolesArray = [...allowedRoles];
         console.log(req.roles);
         const role=req.roles;
@@ -9,6 +9,8 @@ const verifyRoles = (...allowedRoles) => {
             next();
         }
         else if(rolesArray.includes(role)===false){
+            next();
+
             return res.sendStatus(401);
         }
     }
