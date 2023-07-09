@@ -125,6 +125,8 @@ exports.updateCknItems = (req, res) => {
                 coffee: req.body.coffee,
                 drink: req.body.drink,
                 drinkQuantity: req.body.drinkQuantity,
+                bottle: req.body.drink,
+                bottleQuantity: req.body.drinkQuantity,
                 cigarette: req.body.cigarette,
                 cigaretteQuantity: req.body.cigaretteQuantity,
                 chaiQuantity: req.body.chaiQuantity,
